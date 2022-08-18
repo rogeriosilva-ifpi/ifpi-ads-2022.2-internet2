@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { MongoClient } from 'mongodb'
+import { db } from "../data/mongo/MongoDatabase"
 
 interface User{
     id?: string
@@ -9,16 +9,10 @@ interface User{
 }
 
 export class AuthController{
-    
-    private client: MongoClient
-    private db
     private users
 
     constructor(){
-        const uri = 'mongodb://localhost:27017'
-        this.client = new MongoClient(uri)
-        this.db = this.client.db('socialapp')
-        this.users = this.db.collection<User>('users')
+        this.users = db.collection<User>('users')
     }
 
     public signup = async (req: Request, res: Response) => {
