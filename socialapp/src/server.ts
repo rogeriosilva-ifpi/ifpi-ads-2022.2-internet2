@@ -1,6 +1,6 @@
-import express from 'express'
-import { logMiddleware } from './middleware/log_middlware'
-import routes from './routes'
+import express from 'express';
+import { logMiddleware } from './middleware/log_middlware';
+import routes from './routes';
 
 const app = express()
 
