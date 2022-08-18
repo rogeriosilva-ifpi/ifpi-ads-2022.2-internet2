@@ -1,11 +1,11 @@
 import { Router } from 'express'
 
-const router = Router()
+const suelRoutesOffLine = Router()
 
 const feed = 'feed'
 
-router.get('/feed', (req, res)=>{
+suelRoutesOffLine.get('/feed', (req, res)=>{
     res.json({feed})}
 )
 
-export default router
+export default suelRoutesOffLine
