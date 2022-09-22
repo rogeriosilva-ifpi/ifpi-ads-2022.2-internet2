@@ -8,7 +8,8 @@ function app(){
     const bmi_span = document.getElementById('bmi')
 
 
-    btn_calculate.onclick = () => {
+    btn_calculate.onclick = (event) => {
+        event.preventDefault()
         const weight = Number(input_weight.value)
         const height = Number(input_height.value)
 
@@ -16,11 +17,11 @@ function app(){
 
         bmi_span.innerHTML = bmi.toFixed(1)
         
-        const my_h1 = document.createElement('h1')
+        // const my_h1 = document.createElement('h1')
 
-        my_h1.innerText = 'Prof. Dr. Bruno Castro'
+        // my_h1.innerText = 'Prof. Dr. Bruno Castro'
 
-        bmi_span.appendChild(my_h1)
+        // bmi_span.appendChild(my_h1)
 
         result.style.display = 'flex'
 

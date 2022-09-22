@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { Card } from './components/Card'
+import { CondensedButton } from './components/CondensedButton'
 import { Header } from './components/Header'
 import { Hello } from './components/Hello'
 import { Input } from './components/Input'
@@ -12,10 +14,15 @@ function App() {
     setName(event.target.value);
   }
 
+  const onClickHandler = () => {
+    alert('HI Suel!')
+  }
+
   return (
     <div className="App">
       <Header />
-      <div className="card">
+      
+      <Card>
 
         <Input name={name} onChangeCallback={onChangeFunction} />
 
@@ -23,7 +30,10 @@ function App() {
         
         <Hello name={name.toUpperCase()} answer={74} />
 
-      </div>
+        <CondensedButton onClickCallback={onClickHandler} />
+        <CondensedButton label='Click Here!' onClickCallback={onClickHandler} />
+
+      </Card>
      
     </div>
   )
