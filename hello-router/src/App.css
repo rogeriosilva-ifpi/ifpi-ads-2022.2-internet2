@@ -39,10 +39,3 @@
 .read-the-docs {
   color: #888;
 }
-
-#form-car{
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 10rem;
-}

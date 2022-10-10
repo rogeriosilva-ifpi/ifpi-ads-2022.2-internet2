@@ -1,0 +1,14 @@
+{
+    "partidos": [
+        {
+            "id": 1,
+            "nome": "Os Devs",
+            "numero": 666
+        },
+        {
+            "id": 2,
+            "nome": "The Users",
+            "numero": 888
+        }
+    ]
+}
