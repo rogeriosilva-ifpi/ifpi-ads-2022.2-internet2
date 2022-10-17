@@ -2,7 +2,7 @@ import { useCallback, useReducer } from 'react';
 import './App.css';
 import { AddTask } from './components/add_task';
 import { TaskList } from './components/list_task';
-import { ActionType, AppState, appStateReducer } from './reducers/app_reducer';
+import { ActionType, appStateReducer, initialState } from './reducers/app_reducer';
 
 export default function App() {
   const [state, dispatch] = useReducer(appStateReducer, initialState)
@@ -50,12 +50,3 @@ export interface Task{
   text: string
   done: boolean
 }
-
-const initialState: AppState = { 
-  nextId: 4,
-  tasks: [
-      {id: 0, text: 'Elaborar Aulas', done: true},
-      {id: 1, text: 'Estudar Flutter - Estados', done: false},
-      {id: 2, text: 'Correr 4km Av. Raul Lopes', done: false},
-  ]
-};
