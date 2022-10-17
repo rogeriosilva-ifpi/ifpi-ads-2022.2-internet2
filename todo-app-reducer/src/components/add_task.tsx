@@ -8,7 +8,7 @@ export function AddTask({onAddTask}: AddTaskProps){
 
     const [taskText, setTaskText] = useState('')
 
-    const handlerDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTaskText(event.target.value)
     }
 
@@ -24,7 +24,7 @@ export function AddTask({onAddTask}: AddTaskProps){
                 <input 
                     type="text" 
                     value={taskText} 
-                    onChange={handlerDescriptionChange}  
+                    onChange={handleDescriptionChange}  
                     placeholder="Descrição" />
                 <input type="submit" value="Adicionar Tarefa" />
             </form>

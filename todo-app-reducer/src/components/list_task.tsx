@@ -3,7 +3,7 @@ import { TaskItem } from "./item_task"
 
 interface TaskListProps{
     tasks: Task[]
-    onChangeTask: any
+    onChangeTask: (task: Task) => void
     onDeleteTask: (taskId: number) => void
 }
 

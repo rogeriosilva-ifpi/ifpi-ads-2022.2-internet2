@@ -3,7 +3,7 @@ import { Task } from "../App"
 
 interface TaskItemProps{
     task: Task
-    onChangeTask: any
+    onChangeTask: (task: Task) => void
     onDeleteTask: (taskId: number) => void
 }
 
@@ -12,20 +12,24 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
     const [isEditing, setIsEditing] = useState(false)
 
     // useCallback --> Faz memória da função entre as redenrizações
-    const handlerDoneChange = useCallback(()=>{
-        () => {
+    /* Re-criada a cada redenrização
+    const handlerDoneChange = () => {
             task.done = !task.done
             onChangeTask(task)
         }
-    },[task])
+    */
+    const handlerDoneChange = useCallback(() => {
+            task.done = !task.done
+            onChangeTask(task)
+        }, []
+    )
 
-
-    // Implantar --> useCallback
+    // Implantar useCallBack
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTaskText(event.target.value)
     }
 
-    // Implantar --> useCallback
+    // Implantar useCallBack
     const handleEditSaveClick = () => {
         if (isEditing){
             onChangeTask({...task, text: taskText})
@@ -36,7 +40,20 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
     }
 
     // useMemo --> Faz Memória valores entre renderizações/sincronizações
-    const buttonLabel = useMemo(() => isEditing ? "Salvar" : "Editar", [isEditing])
+    const buttonLabel = useMemo(() => {
+            if (isEditing){
+                return "Salvar"}
+            else{
+                return "Editar"
+            }
+        }, 
+    [isEditing])
+
+    // const PI = '3.14'
+
+    // const PI = useMemo(()=>{
+    //     return '3.14'
+    // }, [])
 
     // useHef --> Similar a useState, porém não muda. (atributo current)
     /* Usado geralmente para ficar conectado a algum HTMLElement
@@ -65,7 +82,7 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
             }
 
             <button onClick={handleEditSaveClick}>{buttonLabel}</button>
-            <button onClick={() => onDeleteTask(task.id)} >Apagar</button>
+            <button onClick={() => {onDeleteTask(task.id)}} >Apagar</button>
         </li>
     )
 }

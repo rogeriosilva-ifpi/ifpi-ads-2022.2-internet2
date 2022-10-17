@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 import { AddTask } from './components/add_task';
 import { TaskList } from './components/list_task';
@@ -29,14 +29,18 @@ export default function App() {
     );
   }
 
-  function handleDeleteTask(taskId: number) {
+  const handleDeleteTask = useCallback((taskId: number) => {
     setTasks(tasks.filter((t) => t.id !== taskId));
-  }
+  }, [])
+
+  // function handleDeleteTask(taskId: number) {
+  //   setTasks(tasks.filter((t) => t.id !== taskId));
+  // }
 
   return (
     <div className="App">
       <h1>React + Reducer</h1>
-      <h3>Tasks</h3>
+      <h3>Tarefas</h3>
       
       <AddTask onAddTask={handleAddTask} />
       
