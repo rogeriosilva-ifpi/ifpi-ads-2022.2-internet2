@@ -1,11 +1,12 @@
-import { Task } from "../App";
+import { useReducer } from "react";
+import { Task } from "../models/models";
 
-export interface AppState {
+export interface TasksState {
     nextId: number
     tasks: Task[]
 }
 
-export const initialState: AppState = { 
+export const initialTasksState: TasksState = { 
     nextId: 3,
     tasks: [
         {id: 0, text: 'Elaborar Aulas', done: true},
@@ -22,7 +23,7 @@ type Action =
     | {type: ActionType.Deleted, args: {id: number}}
 
   
-export const appStateReducer = (state: AppState, action: Action): AppState => {
+const tasksReducer = (state: TasksState, action: Action): TasksState => {
     switch (action.type) {
         case ActionType.Added:
             const newTask = {id: state.nextId, text: action.args.text, done: false}
@@ -36,8 +37,12 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
             const nextId = state.nextId--
             return {nextId, tasks: state.tasks.filter(task => task.id !== deletedTaskId)}
         default:
-            console.debug('Unknow action' + action)
+            console.debug('Unknow task action' + action)
             return state
     }
+}
+
+export const useTaskReducer = () => {
+    return useReducer(tasksReducer, initialTasksState)
 }
   
