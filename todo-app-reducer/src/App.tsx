@@ -1,40 +1,31 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useReducer } from 'react';
 import './App.css';
 import { AddTask } from './components/add_task';
 import { TaskList } from './components/list_task';
+import { ActionType, appStateReducer, initialState } from './reducers/app_reducer';
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(()=>{
-    setTasks(initialTasks)
-  },[])
+  const [state, dispatch] = useReducer(appStateReducer, initialState)
 
   function handlerAddTask(text: string) {
-    setTasks([
-      ...tasks,
-      {
-        id: nextId++,
-        text: text,
-        done: false,
-      },
-    ]);
+    dispatch({
+      type: ActionType.Added,
+      args: {text}
+    })
   }
 
-  function handlerChangeTask(task: Task) {
-    setTasks(
-      tasks.map((t) => {
-        if (t.id === task.id) {
-          return task;
-        } else {
-          return t;
-        }
-      })
-    );
+  function handleChangeTask(task: Task) {
+    dispatch({
+      type: ActionType.Changed,
+      args: {task}
+    })
   }
 
-  const handlerDeleteTask = useCallback((taskId: number) => {
-    setTasks(tasks.filter((t) => t.id !== taskId));
+  const handleDeleteTask = useCallback((id: number) => {
+    dispatch({
+      type: ActionType.Deleted,
+      args: {id}
+    })
   }, [])
 
   return (
@@ -45,9 +36,9 @@ export default function App() {
       <AddTask onAddTask={handlerAddTask} />
       
       <TaskList
-        tasks={tasks}
-        onChangeTask={handlerChangeTask}
-        onDeleteTask={handlerDeleteTask}
+        tasks={state.tasks}
+        onChangeTask={handleChangeTask}
+        onDeleteTask={handleDeleteTask}
       />
       
     </div>
@@ -59,11 +50,3 @@ export interface Task{
   text: string
   done: boolean
 }
-
-let nextId = 3;
-
-const initialTasks: Task[] = [
-  {id: 0, text: 'Elaborar Aulas', done: true},
-  {id: 1, text: 'Estudar Flutter - Estados', done: false},
-  {id: 2, text: 'Correr avenida Raul Lopres', done: false},
-];
