@@ -1,12 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react"
+import { useTasksDispatch } from "../hooks/tasks_context"
+import { ActionType } from "../reducers/tasks_reducer"
 
-interface AddTaskProps{
-    onAddTask: (text: string) => void
-}
-
-export function AddTask({onAddTask}: AddTaskProps){
+export function AddTask(){
 
     const [taskText, setTaskText] = useState('')
+    const dispatch = useTasksDispatch()
 
     const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTaskText(event.target.value)
@@ -14,7 +13,10 @@ export function AddTask({onAddTask}: AddTaskProps){
 
     const handlerSubmit = (event: FormEvent) => {
         event.preventDefault()
-        onAddTask(taskText)
+        dispatch({
+            type: ActionType.Added,
+            args: {text: taskText}
+          })
         setTaskText('')
     }
 

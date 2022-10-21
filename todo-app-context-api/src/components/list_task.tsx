@@ -1,14 +1,28 @@
-import { Task } from "../App"
+import { useCallback } from "react"
+import { useTasks, useTasksDispatch } from "../hooks/tasks_context"
+import { Task } from "../models/models"
+import { ActionType } from "../reducers/tasks_reducer"
 import { TaskItem } from "./item_task"
 
-interface TaskListProps{
-    tasks: Task[]
-    onChangeTask: (task: Task) => void
-    onDeleteTask: (taskId: number) => void
-}
 
+export function TaskList(){
 
-export function TaskList({tasks, onChangeTask, onDeleteTask}: TaskListProps){
+    const tasks = useTasks()
+    const dispatch = useTasksDispatch()
+
+    function handlerChangeTask(task: Task) {
+        dispatch({
+          type: ActionType.Changed,
+          args: {task}
+        })
+      }
+    
+      const handlerDeleteTask = useCallback((id: number) => {
+        dispatch({
+          type: ActionType.Deleted,
+          args: {id}
+        })
+      }, [])
 
     return (
         <>
@@ -16,8 +30,8 @@ export function TaskList({tasks, onChangeTask, onDeleteTask}: TaskListProps){
                 {tasks.map(task => (
                    <TaskItem key={task.id} 
                         task={task} 
-                        onChangeTask={onChangeTask} 
-                        onDeleteTask={onDeleteTask} />
+                        onChangeTask={handlerChangeTask} 
+                        onDeleteTask={handlerDeleteTask} />
                 ))}
             </ul>
         </>

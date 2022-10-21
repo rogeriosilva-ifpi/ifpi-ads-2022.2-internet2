@@ -17,7 +17,7 @@ export const initialTasksState: TasksState = {
 
 export enum ActionType{'Added','Changed','Deleted'}
 
-type Action = 
+export type Action = 
     {type: ActionType.Added, args: {text: string}}
     | {type: ActionType.Changed, args: {task: Task}}
     | {type: ActionType.Deleted, args: {id: number}}
@@ -42,7 +42,7 @@ const tasksReducer = (state: TasksState, action: Action): TasksState => {
     }
 }
 
-export const useTaskReducer = () => {
+export const useTasksReducer = () => {
     return useReducer(tasksReducer, initialTasksState)
 }
   
