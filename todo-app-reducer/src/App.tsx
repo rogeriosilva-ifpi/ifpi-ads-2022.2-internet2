@@ -1,12 +1,16 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import { AddTask } from './components/add_task';
 import { TaskList } from './components/list_task';
 
 export default function App() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  function handleAddTask(text: string) {
+  useEffect(()=>{
+    setTasks(initialTasks)
+  },[])
+
+  function handlerAddTask(text: string) {
     setTasks([
       ...tasks,
       {
@@ -17,7 +21,7 @@ export default function App() {
     ]);
   }
 
-  function handleChangeTask(task: Task) {
+  function handlerChangeTask(task: Task) {
     setTasks(
       tasks.map((t) => {
         if (t.id === task.id) {
@@ -29,25 +33,21 @@ export default function App() {
     );
   }
 
-  const handleDeleteTask = useCallback((taskId: number) => {
+  const handlerDeleteTask = useCallback((taskId: number) => {
     setTasks(tasks.filter((t) => t.id !== taskId));
   }, [])
-
-  // function handleDeleteTask(taskId: number) {
-  //   setTasks(tasks.filter((t) => t.id !== taskId));
-  // }
 
   return (
     <div className="App">
       <h1>React + Reducer</h1>
       <h3>Tarefas</h3>
       
-      <AddTask onAddTask={handleAddTask} />
+      <AddTask onAddTask={handlerAddTask} />
       
       <TaskList
         tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
+        onChangeTask={handlerChangeTask}
+        onDeleteTask={handlerDeleteTask}
       />
       
     </div>

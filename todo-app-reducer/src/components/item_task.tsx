@@ -21,7 +21,7 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
     const handlerDoneChange = useCallback(() => {
             task.done = !task.done
             onChangeTask(task)
-        }, []
+        }, [isEditing]
     )
 
     // Implantar useCallBack
