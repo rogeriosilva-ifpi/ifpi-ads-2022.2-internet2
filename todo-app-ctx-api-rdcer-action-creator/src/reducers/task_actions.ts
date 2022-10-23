@@ -28,3 +28,25 @@ export const AddTaskAction = (dispach: Dispatch<Action>, text: string) => {
             })
 
 }
+
+export const DeleteTaskAction = (dispach: Dispatch<Action>, id: number) => {
+    const requestInit = {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }
+
+    fetch(`http://localhost:3000/tasks/${id}`, requestInit)
+        .then(response => {
+            if (response.ok){
+                dispach({
+                    type: ActionType.Deleted,
+                    args: {
+                        id
+                    }
+                })
+            }
+        })
+}

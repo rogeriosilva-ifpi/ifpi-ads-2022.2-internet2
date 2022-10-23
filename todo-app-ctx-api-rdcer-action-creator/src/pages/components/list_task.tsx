@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react"
 import { useTasks, useTasksDispatch } from "../../hooks/tasks_context"
 import { Task } from "../../models/models"
 import { ActionType } from "../../reducers/tasks_reducer"
-import { GetAllTasksAction } from "../../reducers/task_actions"
+import { DeleteTaskAction, GetAllTasksAction } from "../../reducers/task_actions"
 import { TaskItem } from "./item_task"
 
 
@@ -23,10 +23,7 @@ export function TaskList(){
       }
     
       const handlerDeleteTask = useCallback((id: number) => {
-        dispatch({
-          type: ActionType.Deleted,
-          args: {id}
-        })
+        DeleteTaskAction(dispatch, id)
       }, [])
 
     return (

@@ -11,13 +11,6 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
     const [taskText, setTaskText] = useState(task.text)
     const [isEditing, setIsEditing] = useState(false)
 
-    // useCallback --> Faz memória da função entre as redenrizações
-    /* Re-criada a cada redenrização
-    const handlerDoneChange = () => {
-            task.done = !task.done
-            onChangeTask(task)
-        }
-    */
     const handlerDoneChange = useCallback(() => {
             task.done = !task.done
             onChangeTask(task)
