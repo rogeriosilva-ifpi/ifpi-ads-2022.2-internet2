@@ -50,3 +50,20 @@ export const DeleteTaskAction = (dispach: Dispatch<Action>, id: number) => {
             }
         })
 }
+
+export const UpdateTaskAction = (dispach: Dispatch<Action>, task: Task) => {
+    const requestInit = {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(task)
+    }
+    fetch(`http://localhost:3000/tasks/${task.id}`, requestInit)
+        .then(response => response.json())
+        .then((task: Task) => {
+                dispach({type: ActionType.Changed, args: {task}})
+            })
+
+}

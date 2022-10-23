@@ -7,11 +7,11 @@
     },
     {
       "id": 2,
-      "text": "Correr 6km",
+      "text": "Correr 5km Avenida",
       "done": true
     },
     {
-      "text": "Agua",
+      "text": "Comprar Água",
       "done": false,
       "id": 3
     }
