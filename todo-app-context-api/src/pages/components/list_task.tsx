@@ -1,7 +1,7 @@
 import { useCallback } from "react"
-import { useTasks, useTasksDispatch } from "../hooks/tasks_context"
-import { Task } from "../models/models"
-import { ActionType } from "../reducers/tasks_reducer"
+import { useTasks, useTasksDispatch } from "../../hooks/tasks_context"
+import { Task } from "../../models/models"
+import { ActionType } from "../../reducers/tasks_reducer"
 import { TaskItem } from "./item_task"
 
 

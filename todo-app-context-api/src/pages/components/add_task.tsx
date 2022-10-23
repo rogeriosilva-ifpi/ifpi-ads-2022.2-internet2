@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react"
-import { useTasksDispatch } from "../hooks/tasks_context"
-import { ActionType } from "../reducers/tasks_reducer"
+import { useTasksDispatch } from "../../hooks/tasks_context"
+import { ActionType } from "../../reducers/tasks_reducer"
 
 export function AddTask(){
 

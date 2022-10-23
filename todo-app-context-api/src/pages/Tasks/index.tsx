@@ -1,5 +1,5 @@
-import { AddTask } from "../../components/add_task"
-import { TaskList } from "../../components/list_task"
+import { AddTask } from "../components/add_task"
+import { TaskList } from "../components/list_task"
 
 export default function Tasks() {
   
