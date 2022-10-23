@@ -49,12 +49,6 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
         }, 
     [isEditing])
 
-    // const PI = '3.14'
-
-    // const PI = useMemo(()=>{
-    //     return '3.14'
-    // }, [])
-
     // useHef --> Similar a useState, porém não muda. (atributo current)
     /* Usado geralmente para ficar conectado a algum HTMLElement
       e assim ler ou alterar algum atributo/estado  */

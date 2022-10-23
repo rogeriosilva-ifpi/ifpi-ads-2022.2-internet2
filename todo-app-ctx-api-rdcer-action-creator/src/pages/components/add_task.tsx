@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react"
 import { useTasksDispatch } from "../../hooks/tasks_context"
-import { ActionType } from "../../reducers/tasks_reducer"
+import { AddTaskAction } from "../../reducers/task_actions"
 
 export function AddTask(){
 
@@ -13,10 +13,11 @@ export function AddTask(){
 
     const handlerSubmit = (event: FormEvent) => {
         event.preventDefault()
-        dispatch({
-            type: ActionType.Added,
-            args: {text: taskText}
-          })
+        // dispatch({
+        //     type: ActionType.Added,
+        //     args: {text: taskText}
+        //   })
+        AddTaskAction(dispatch, taskText)
         setTaskText('')
     }
 
