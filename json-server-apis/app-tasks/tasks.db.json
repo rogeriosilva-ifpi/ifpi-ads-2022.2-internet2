@@ -2,17 +2,17 @@
   "tasks": [
     {
       "id": 1,
-      "text": "Estudar Redux",
+      "text": "Estudar Redux 3",
       "done": false
     },
     {
       "id": 2,
-      "text": "Correr 5km Avenida",
-      "done": true
+      "text": "Correr 5km avenida",
+      "done": false
     },
     {
-      "text": "Comprar Água",
-      "done": false,
+      "text": "Comprar água",
+      "done": true,
       "id": 3
     }
   ]

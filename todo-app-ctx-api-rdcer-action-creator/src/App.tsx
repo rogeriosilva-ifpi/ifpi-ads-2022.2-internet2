@@ -1,12 +1,12 @@
 import './App.css';
 import { TasksProvider } from './hooks/tasks_context';
-import Tasks from './pages/Tasks';
+import TasksPage from './pages/Tasks';
 
 export default function App() {
 
   return (
       <TasksProvider>
-        <Tasks />
+        <TasksPage />
       </TasksProvider>
   )
 }
