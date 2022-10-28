@@ -1,1 +1,1 @@
-export type Maybe<T> = Promise<T | undefined>
+export type Maybe<T> = Promise<T | null>
