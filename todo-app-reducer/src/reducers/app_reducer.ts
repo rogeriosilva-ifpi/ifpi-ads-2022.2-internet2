@@ -21,6 +21,13 @@ type Action =
     | {type: ActionType.Changed, args: {task: Task}}
     | {type: ActionType.Deleted, args: {id: number}}
 
+
+interface Nome{
+    value: 'Rogerio' | 'Erick'
+} 
+
+const meuNome = {value: "Erick"} as Nome
+
   
 export const appStateReducer = (state: AppState, action: Action): AppState => {
     switch (action.type) {

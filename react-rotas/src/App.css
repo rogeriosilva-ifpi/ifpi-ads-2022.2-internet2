@@ -1,0 +1,56 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+.App{
+  /* background: blue; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+li{
+  list-style-type: none;
+}
+
+header{
+  /* background: red; */
+  /* height: 5rem; */
+  flex: 1;
+}
+
+main{
+  /* height: 30rem; */
+  flex: 6;
+}
+
+
+footer{
+  /* background: greenyellow; */
+  height: 3rem;
+  flex: 1;
+}
+
+.menu ul{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.menu ul li{
+  cursor: pointer;
+}
+
+.menu a{
+  color: white
+}
+
+.menu a:hover{
+  color: white;
+  font-weight: bold;
+}
+

@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { ChangeEvent, useCallback, useMemo, useState } from "react"
 import { Task } from "../App"
 
 interface TaskItemProps{
@@ -58,11 +58,11 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
     // useHef --> Similar a useState, porém não muda. (atributo current)
     /* Usado geralmente para ficar conectado a algum HTMLElement
       e assim ler ou alterar algum atributo/estado  */
-    const inputTaskTextRef = useRef<HTMLInputElement>(null)
+    /*const inputTaskTextRef = useRef<HTMLInputElement>(null)
 
     useEffect(()=> {
         isEditing && inputTaskTextRef.current!.focus()
-    }, [isEditing])
+    }, [isEditing])*/
 
     return (
         <li key={task.id}>
@@ -72,9 +72,10 @@ export function TaskItem({task, onChangeTask, onDeleteTask}: TaskItemProps){
                 isEditing ? 
                         (
                             <input 
-                                ref={inputTaskTextRef}
+                                // ref={inputTaskTextRef}
                                 value={taskText} 
                                 onChange={handleTextChange} 
+                                autoFocus={isEditing}
                                 />
                         ) 
                     : 
