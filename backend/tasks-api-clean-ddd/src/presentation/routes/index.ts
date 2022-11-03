@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { AppController } from './controllers'
+import { AppController } from '../controllers/AppController'
 
 // Mapear Padrão com Controller function
 // Incluir os Middlewares (auth, validation, transformacao)
