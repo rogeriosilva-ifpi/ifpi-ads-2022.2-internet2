@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { UserListQuery } from "../../application/UserListQuery"
+import { UserListQuery } from "../../application/queries/UserListQuery"
 import { User } from "../../domain/entities/User"
 import { TaskRepository } from "../../domain/repositories/TaskRepository"
 import { TypeORMTaskRepository } from "../../persistence/typeorm/repositories/TypeORMTaskRepository"
