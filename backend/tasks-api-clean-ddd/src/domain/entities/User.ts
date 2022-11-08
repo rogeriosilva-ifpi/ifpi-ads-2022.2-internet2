@@ -7,7 +7,7 @@ export enum UserProfile{
 @Entity({orderBy: {'username': 'ASC'}})
 export class User extends BaseEntity{
     @PrimaryGeneratedColumn()
-    id: number
+    id?: number
 
     @Column({nullable: false, length: 200})
     name: string

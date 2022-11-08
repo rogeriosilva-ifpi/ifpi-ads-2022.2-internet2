@@ -9,9 +9,11 @@
     "create:migration": "ts-node ./node_modules/.bin/typeorm migration:create -d data-source.ts"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.3.10"
   },
   "devDependencies": {

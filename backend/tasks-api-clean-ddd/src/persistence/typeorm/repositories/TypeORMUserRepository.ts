@@ -3,12 +3,21 @@ import { User } from "../../../domain/entities/User";
 import { UserRepository } from "../../../domain/repositories/UserRepository";
 
 export class TypeORMUserRepository implements UserRepository{
-    save(obj: User): Promise<number> {
-        throw new Error("Method not implemented.");
+
+    async exists(username: string): Promise<boolean> {
+        const user = await User.findOneBy({username}) 
+        return user ? true : false
     }
+
+    async save(obj: User): Promise<User> {
+        return await obj.save();
+    }
+
+
     getById(id: number): Maybe<User> {
         throw new Error("Method not implemented.");
     }
+
     getAll(): Promise<User[]> {
         return User.find();
     }

@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { container } from 'tsyringe'
 import { AppController } from '../controllers/AppController'
 
 // Mapear Padrão com Controller function
@@ -6,8 +7,11 @@ import { AppController } from '../controllers/AppController'
 
 export const router = Router()
 
-const appController = new AppController()
+const appController = container.resolve(AppController)
 
+// Tasks
 router.get('/tasks', appController.tasksList)
 
+// Users
 router.get('/users', appController.usersList)
+router.post('/signup', appController.signup)
