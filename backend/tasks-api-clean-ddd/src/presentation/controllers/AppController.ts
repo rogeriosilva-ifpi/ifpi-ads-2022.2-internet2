@@ -25,13 +25,17 @@ export class AppController{
             res.status(400).json({error: 'Senha não confere com confirmação de senha'})
         }
 
-        try {
-            const user = await this.signupCmd.execute({name, username, password})
+        const user = await this.signupCmd.execute({name, username, password})
 
-            return res.status(201).json(user)  
-        } catch (error: any) {
-            res.status(400).json({message: error.message})
-        }
+        // return res.status(201).json(user)
+
+        // try {
+        //     const user = await this.signupCmd.execute({name, username, password})
+
+        //     return res.status(201).json(user)  
+        // } catch (error: any) {
+        //     res.status(400).json({message: error.message})
+        // }
         
     }
 

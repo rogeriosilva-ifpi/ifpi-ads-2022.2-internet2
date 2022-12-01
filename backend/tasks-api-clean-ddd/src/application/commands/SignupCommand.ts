@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AlreadyUsedUsernameException } from "../../common/exceptions/AlreadyUsedUsernameException";
 import { User } from "../../domain/entities/User";
 import { UserRepository } from "../../domain/repositories/UserRepository";
 import { INJECTS } from "../../infrastructure/ioc-container";
@@ -29,9 +30,15 @@ export class SignupCommand{
 
     async execute(request: SignupRequestModel): Promise<User>{
 
+        throw new Error("Erro Fake!");
+        
+
         // failfast
         if (await this.userRepository.exists(request.username)){
-            throw Error('Já existe um usuário com este username')
+            // throw Error('Já existe um usuário com este username')
+            // throw new HTTPException(400, 'Já existe um usuário com este username')
+            // throw new BadRequestException('Já existe um usuário com este username')
+            throw new AlreadyUsedUsernameException()
         }
 
         const user_ = new User()
