@@ -13,6 +13,9 @@ export function error_interceptor(error: Error, req: Request, res: Response, nex
         )
     }
 
+    // Se: foi um erro inesperado (fora do meu kit HTTPException)
+
+    // Então: Disparar para Sentry 
     const transaction = Sentry.startTransaction({
         op: 'Test',
         name: 'My first test transaction! ;)'
@@ -20,6 +23,7 @@ export function error_interceptor(error: Error, req: Request, res: Response, nex
     Sentry.captureEvent(error);
     transaction.finish()
 
+    // E: Mandar a resposta adequada ao Cliente 
     res.status(500).json({
         code: error.constructor.name,
         message: 'Algo deu errado :('

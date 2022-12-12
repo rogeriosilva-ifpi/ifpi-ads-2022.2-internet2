@@ -9,7 +9,6 @@ import { TypeORMTaskRepository } from "../../persistence/typeorm/repositories/Ty
 @injectable()
 export class AppController{
     
-
     constructor(
         private userListQuery: UserListQuery,
         private signupCmd: SignupCommand
@@ -17,10 +16,9 @@ export class AppController{
 
     signup = async (req: Request, res: Response) => {
 
-        console.log(req.body)
         const {username, name, password, confirmPassword} = req.body
 
-        // Validacoes e tranformacoes
+        // Validações e transformações
         if (password != confirmPassword){
             res.status(400).json({error: 'Senha não confere com confirmação de senha'})
         }
@@ -29,14 +27,6 @@ export class AppController{
 
         return res.status(201).json(user)
 
-        // try {
-        //     const user = await this.signupCmd.execute({name, username, password})
-
-        //     return res.status(201).json(user)  
-        // } catch (error: any) {
-        //     res.status(400).json({message: error.message})
-        // }
-        
     }
 
     usersList = async (req: Request, res: Response) => {
