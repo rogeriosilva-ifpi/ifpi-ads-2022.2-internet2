@@ -27,7 +27,7 @@ export class AppController{
 
         const user = await this.signupCmd.execute({name, username, password})
 
-        // return res.status(201).json(user)
+        return res.status(201).json(user)
 
         // try {
         //     const user = await this.signupCmd.execute({name, username, password})

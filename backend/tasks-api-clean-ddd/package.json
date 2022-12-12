@@ -9,6 +9,8 @@
     "create:migration": "ts-node ./node_modules/.bin/typeorm migration:create -d data-source.ts"
   },
   "dependencies": {
+    "@sentry/node": "^7.23.0",
+    "@sentry/tracing": "^7.23.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
